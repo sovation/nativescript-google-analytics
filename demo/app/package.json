@@ -1,0 +1,37 @@
+{
+  "name": "tns-template-hello-world",
+  "main": "app.js",
+  "version": "1.5.1",
+  "author": {
+    "name": "Telerik",
+    "email": "support@telerik.com"
+  },
+  "description": "Nativescript hello-world project template",
+  "license": "Apache-2.0",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/NativeScript/template-hello-world.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NativeScript/template-hello-world/issues"
+  },
+  "homepage": "https://github.com/NativeScript/template-hello-world",
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "gitHead": "4875dd4efb834ced0d3b9302be7635bc1fb8d4b7",
+  "readme": "ERROR: No README data found!",
+  "_id": "tns-template-hello-world@1.5.1",
+  "_shasum": "c951887d9b3b4780e4fc0c139214a319d22f9ff6",
+  "_from": "git+https://github.com/sitefinitysteve/template-hello-world.git",
+  "_resolved": "git+https://github.com/sitefinitysteve/template-hello-world.git#4875dd4efb834ced0d3b9302be7635bc1fb8d4b7"
+}

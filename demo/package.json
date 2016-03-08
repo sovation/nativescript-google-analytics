@@ -1,0 +1,12 @@
+{
+  "nativescript": {
+    "id": "org.nativescript.google-analytics",
+    "tns-ios": {
+      "version": "1.6.0"
+    }
+  },
+  "dependencies": {
+    "nativescript-google-analytics": "file:../nativescript-google-analytics",
+    "tns-core-modules": "1.6.2"
+  }
+}

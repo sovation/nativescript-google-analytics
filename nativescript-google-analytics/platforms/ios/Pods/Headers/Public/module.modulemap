@@ -1,0 +1,4 @@
+module Google2 {
+  umbrella "."
+  export *
+}

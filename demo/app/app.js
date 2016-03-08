@@ -17,14 +17,15 @@ if (application.ios) {
         }
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
-            debugger;
-            /*var configureError;
+            var configureError = new NSError();
             GGLContext.sharedInstance().configureWithError(configureError);
+            debugger;
             
             var gai = GAI.sharedInstance();
             gai.trackUncaughtExceptions = true;
-            gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
-            */
+            
+            // Only use this in debug mode
+            //gai.logger.logLevel = kGAILogLevelVerbose;
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];

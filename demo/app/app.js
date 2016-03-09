@@ -1,4 +1,5 @@
 var application = require("application");
+var googleAnalytics = require("nativescript-google-analytics");
 application.mainModule = "main-page";
 application.cssFile = "./app.css";
 
@@ -17,15 +18,7 @@ if (application.ios) {
         }
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
-            var configureError = new NSError();
-            GGLContext.sharedInstance().configureWithError(configureError);
-            debugger;
-            
-            var gai = GAI.sharedInstance();
-            gai.trackUncaughtExceptions = true;
-            
-            // Only use this in debug mode
-            //gai.logger.logLevel = kGAILogLevelVerbose;
+            googleAnalytics.initalize();
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
@@ -34,6 +27,7 @@ if (application.ios) {
     application.ios.delegate = appDelegate;
 }else{
     //ANDROID
+    
 }
 
 application.start();

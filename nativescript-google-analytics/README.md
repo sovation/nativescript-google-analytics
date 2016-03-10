@@ -1,6 +1,14 @@
+## Add Plugin ##
 ```
 tns plugin add nativescript-google-analytics 
 ```
+
+## Get Config files ##
+* [iOS instructions](https://developers.google.com/analytics/devguides/collection/ios/v3/#initialize-analytics-for-your-app)
+* [Android instructions](https://developers.google.com/analytics/devguides/collection/android/v4/#add-screen-tracking)
+* Click the "Get a Configuration File" instrutctions
+* Add the platform specific config file you just downloaded to its respective App_Resources/{platform} folder
+
 
 ## Initalize the tracker ##
 ``` js
@@ -44,4 +52,17 @@ if (application.ios) {
 
 application.start();
 
+```
+
+
+## Optional Methods ##
+``` js
+// category and action are not optional, label and value are
+googleAnalytics.logEvent(
+    {
+      category: "MyCategory",
+      action: "MyAction",
+      label: "MyLabel",
+      value: 7
+    });
 ```

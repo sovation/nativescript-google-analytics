@@ -4,6 +4,7 @@ application.mainModule = "main-page";
 application.cssFile = "./app.css";
 
 if (application.ios) {
+    //IOS
     var __extends = this.__extends || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -18,7 +19,8 @@ if (application.ios) {
         }
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
-            googleAnalytics.initalize();
+            //Module Code to initalize
+            googleAnalytics.initalize("UA-74227193-1");
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
@@ -27,7 +29,11 @@ if (application.ios) {
     application.ios.delegate = appDelegate;
 }else{
     //ANDROID
-    
+    application.on(application.launchEvent, function (args) {
+        //Module Code to initalize
+        googleAnalytics.initalize("UA-74227193-1");
+    });
+
 }
 
 application.start();

@@ -7,7 +7,7 @@ function pageLoaded(args) {
     page.bindingContext = viewModel;
     
     if (application.android) {
-        googleAnalytics.initalize("UA-74227193-1");
+        //googleAnalytics.initalize("UA-74227193-1");
     }
     
 }

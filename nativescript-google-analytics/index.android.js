@@ -11,8 +11,9 @@ exports.initalize = function (trackingId) {
 }
 
 exports.logView = function(viewname){
-    //var builder = com.google.android.gms.analytics.HitBuilders.EventBuilder();
-    //global.tracker.send()
+    global.tracker.setScreenName(viewname);
+    var bulitEvent = new com.google.android.gms.analytics.HitBuilders.ScreenViewBuilder().build();
+    global.tracker.send(bulitEvent);
 }
 
 exports.logEvent = function(data){

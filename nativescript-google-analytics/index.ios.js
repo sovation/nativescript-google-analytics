@@ -11,13 +11,14 @@ exports.initalize = function (trackingId) {
 }
 
 exports.logView = function(viewname){
-    /*
-    debugger;
-    var tracker = global.gai.defaultTracker;
-    var key = kGAIScreenName;
-
-    tracker.setValueForKey(viewname, key)
-    */
+    var event = GAIDictionaryBuilder.createScreenView().setForKey(viewname, kGAIScreenName);
+    var builtEvent = event.build();
+    
+    //Future implimentation
+    //GAITracker.prototype.send.call(global.tracker, builderResult);
+    
+    //Current Hack
+    global.tracker.performSelectorWithObject("send:", builtEvent)
 }
 
 exports.logEvent = function(data){
@@ -28,7 +29,6 @@ exports.logEvent = function(data){
       data.value  
     );
     var builtEvent = event.build();
-    debugger;
     //Future implimentation
     //GAITracker.prototype.send.call(global.tracker, builderResult);
     

@@ -1,3 +1,5 @@
+# Nativescript Google Analytics #
+
 ## Add Plugin ##
 ```
 tns plugin add nativescript-google-analytics 
@@ -56,6 +58,7 @@ application.start();
 
 
 ## Optional Methods ##
+### Log Event ###
 ``` js
 // category and action are not optional, label and value are
 googleAnalytics.logEvent(
@@ -65,4 +68,10 @@ googleAnalytics.logEvent(
       label: "MyLabel",
       value: 7
     });
+```
+
+### Log ScreenView ###
+``` js
+// category and action are not optional, label and value are
+googleAnalytics.logView("Secondary-Page");
 ```

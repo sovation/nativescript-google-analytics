@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "nativescript-google-analytics": "file:../nativescript-google-analytics",
+    "nativescript-snackbar": "^1.0.3",
     "tns-core-modules": "1.6.2"
   }
 }

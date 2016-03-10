@@ -14,7 +14,12 @@ function pageLoaded(args) {
 exports.pageLoaded = pageLoaded;
 
 function tapAction(args) {
-    googleAnalytics.logEvent("MyCategory", "MyAction", "MyLabel", "MyValue");
+    googleAnalytics.logEvent({
+      category: "MyCategory",
+      action: "MyAction",
+      label: "MyLabel",
+      value: 7
+    });
 }
 
 exports.tapAction = tapAction;

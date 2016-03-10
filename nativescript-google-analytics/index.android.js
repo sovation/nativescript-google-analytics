@@ -15,20 +15,20 @@ exports.logView = function(viewname){
     //global.tracker.send()
 }
 
-exports.logEvent = function(category, action, label, value){
+exports.logEvent = function(data){
     var event = new com.google.android.gms.analytics.HitBuilders.EventBuilder();
 
-    if(category && category !== "" && category !== null)
-        event.setCategory(category);
+    if(data.category && data.category !== "" && data.category !== null)
+        event.setCategory(data.category);
         
-    if(action && action !== "" && action !== null)
-        event.setAction(action);
+    if(data.action && data.action !== "" && data.action !== null)
+        event.setAction(data.action);
     
-    if(label && label !== "" && label !== null)
-        event.setLabel(label);
+    if(data.label && data.label !== "" && data.label !== null)
+        event.setLabel(data.label);
      
-    if(value && value !== "" && value !== null)
-        event.setValue(value);   
+    if(data.value && data.value !== "" && data.value !== null)
+        event.setValue(data.value);   
     
     var bulitEvent = event.build();
     

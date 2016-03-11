@@ -14,7 +14,7 @@ tns plugin add nativescript-google-analytics
 * Add the platform specific config file you just downloaded to its respective App_Resources/{platform} folder
 
 
-## Initalize the tracker ##
+## Initalize the tracker in app.js ##
 ``` js
 var application = require("application");
 var googleAnalytics = require("nativescript-google-analytics");

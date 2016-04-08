@@ -6,6 +6,9 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
-### 1.4 ###
+### 0.1.5 ###
+* Updated sending code to use new {N} Protocol code
+
+### 0.1.4 ###
 * iOS Grabbing tracker by ID, not default
 * Error handling per issue

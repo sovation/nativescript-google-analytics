@@ -1,14 +1,15 @@
 exports.initalize = function (trackingId) {
     var configureError = new interop.Reference();
     GGLContext.sharedInstance().configureWithError(configureError);
-    
+
     var gai = GAI.sharedInstance();
     gai.trackUncaughtExceptions = true;
-    var defaultTracker = GAI.sharedInstance().defaultTracker;
+    var defaultTracker = GAI.sharedInstance().trackerWithTrackingId(trackingId);
     global.tracker = defaultTracker;
     
     // Only use this in debug mode
-    //gai.logger.logLevel = kGAILogLevelVerbose;
+    //var logLevel = 4; //kGAILogLevelVerbose
+    //gai.logger.logLevel = logLevel;
 }
 
 exports.logView = function(viewname){
@@ -16,7 +17,7 @@ exports.logView = function(viewname){
     var event = GAIDictionaryBuilder.createScreenView().setForKey(viewname, gAIScreenName);
     var builtEvent = event.build();
     
-    //Future implimentation
+    //Future implimentation per: https://groups.google.com/forum/#!topic/nativescript/lzGP7QdXI7E
     //GAITracker.prototype.send.call(global.tracker, builderResult);
     
     //Current Hack
@@ -34,7 +35,7 @@ exports.logEvent = function(data){
       data.value  
     );
     var builtEvent = event.build();
-    //Future implimentation
+    //Future implimentation per: https://groups.google.com/forum/#!topic/nativescript/lzGP7QdXI7E
     //GAITracker.prototype.send.call(global.tracker, builderResult);
     
     //Current Hack

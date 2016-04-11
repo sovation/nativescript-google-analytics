@@ -19,12 +19,7 @@ if (application.ios) {
         }
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
-            //Module Code to initalize
-            googleAnalytics.initalize({
-                trackingId: "UA-74227193-1",
-                userId: "steve",
-                logging: true
-            });
+            initAnalytics(); //Module Code to initalize
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
@@ -34,14 +29,17 @@ if (application.ios) {
 }else{
     //ANDROID
     application.on(application.launchEvent, function (args) {
-        //Module Code to initalize
-        googleAnalytics.initalize({
-            trackingId: "UA-74227193-1",
-            userId: "steve",
-            logging: true
-        });
+        initAnalytics(); //Module Code to initalize
     });
 
 }
 
 application.start();
+
+function initAnalytics(){
+    googleAnalytics.initalize({
+                trackingId: "UA-74227193-1",
+                dispatchInterval: 5,
+                logging: true
+            });
+}

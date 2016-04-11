@@ -2,30 +2,35 @@ var application = require("application");
 
 
 exports.initalize = function (config) {
-    var context = application.android.context;
-    
-    var gai = com.google.android.gms.analytics.GoogleAnalytics.getInstance(context);
-    var tracker = analytics.newTracker(config.trackingId);
-    
-    if(config.dispatchInterval){
-        gai.setLocalDispatchPeriod(config.dispatchInterval);
+    if(config.trackingId){
+        var context = application.android.context;
+        
+        var gai = com.google.android.gms.analytics.GoogleAnalytics.getInstance(context);
+        var tracker = gai.newTracker(config.trackingId);
+        
+        if(config.dispatchInterval){
+            gai.setLocalDispatchPeriod(config.dispatchInterval);
+        }
+        
+        /*
+        if(config.userId){
+            tracker.setClientId(config.userId);
+        }
+        */
+        
+        if(config.logging){
+            console.log("To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG");
+        }
+        
+        global.gaInstance = gai;
+        global.gaTracker = tracker;
+    }else{
+        throw "Sup boss, how do you plan on tracking with no trackingId?  Please add it to the config";
     }
-    
-    /*
-    if(config.userId){
-        tracker.setClientId(config.userId);
-    }
-    */
-    
-    if(config.logging){
-        console.log("To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG");
-    }
-    
-    global.gaInstance = gai;
-    global.gaTracker = tracker;
 }
 
 exports.logView = function(viewname){
+    console.log("Analytics Event: Log Screen View: " + viewname + " at " + new Date());
     global.gaTracker.setScreenName(viewname);
     var builtEvent = new com.google.android.gms.analytics.HitBuilders.ScreenViewBuilder().build();
     global.gaTracker.send(builtEvent);

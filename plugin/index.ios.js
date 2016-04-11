@@ -1,33 +1,42 @@
+var application = require("application");
+
+
 exports.initalize = function (config) {
-    var configureError = new interop.Reference();
-    GGLContext.sharedInstance().configureWithError(configureError);
+    if(config.trackingId){
+        var configureError = new interop.Reference();
+        GGLContext.sharedInstance().configureWithError(configureError);
 
-    var gai = GAI.sharedInstance();
-    gai.trackUncaughtExceptions = true;
-    var defaultTracker = gai.trackerWithTrackingId(config.trackingId);
+        var gai = GAI.sharedInstance();
+        gai.trackUncaughtExceptions = true;
+        var defaultTracker = gai.trackerWithTrackingId(config.trackingId);
 
-    
-    if(config.dispatchInterval){
-        gai.dispatchInterval = config.dispatchInterval;
-    } 
+        
+        if(config.dispatchInterval){
+            gai.dispatchInterval = config.dispatchInterval;
+        } 
 
-    /*
-    if(config.userId){
-        var gAIUserId = "&uid"; //kGAIUserId
-        global.gaTracker.setValueForKey(gAIUserId, config.userId);
+        /*
+        if(config.userId){
+            var gAIUserId = "&uid"; //kGAIUserId
+            global.gaTracker.setValueForKey(gAIUserId, config.userId);
+        }
+        */
+
+        if(config.logging){
+            var logLevel = 4; //kGAILogLevelVerbose
+            gai.logger.logLevel = logLevel;
+        }
+        
+        global.gaTracker = defaultTracker;
+        global.gaInstance = gai;
+    }else{
+        throw "Sup boss, how do you plan on tracking with no trackingId?  Please add it to the config";
     }
-    */
-
-    if(config.logging){
-        var logLevel = 4; //kGAILogLevelVerbose
-        gai.logger.logLevel = logLevel;
-    }
-    
-    global.gaTracker = defaultTracker;
-    global.gaInstance = gai;
 }
 
 exports.logView = function(viewname){
+    console.log("Analytics Event: Log Screen View: " + viewname + " at " + new Date());
+    
     var gAIScreenName =  "&cd"; //kGAIScreenName
     var event = GAIDictionaryBuilder.createScreenView().setForKey(viewname, gAIScreenName);
     var builtEvent = event.build();

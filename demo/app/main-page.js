@@ -10,7 +10,7 @@ exports.pageLoaded = function(args) {
     page.bindingContext = viewModel;
     
     googleAnalytics.logView("Main-Page");
-    snackbar.simple("Logged view of main-page");
+    //snackbar.simple("Logged view of main-page");
     
     wireEvents();
 }

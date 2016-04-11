@@ -1,11 +1,32 @@
 android {
   productFlavors {
     "nativescript-google-analytics" {
-      dimension "google-analytics"
+      dimension "nativescript-google-analytics"
     }
   }
 }
 
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.0.0-beta6'
+        classpath 'com.google.gms:google-services:2.0.0-beta6'
+    }
+}
+
 dependencies {
+    // [START gms_compile]
     compile 'com.google.android.gms:play-services-analytics:8.4.0'
+    // [END gms_compile]
+}
+
+
+allprojects {
+    repositories {
+        jcenter()
+    }
 }

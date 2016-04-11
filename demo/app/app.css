@@ -7,11 +7,13 @@
     color: #a9a9a9;
     background-color: #FFFFFF;
     border-radius: 10;
-    margin:20;
     text-align: center;
-    padding: 50 0;
     border-width: 1;
     border-color: #a9a9a9;
+    margin-bottom: 20;
+    vertical-align: center;
+    margin-left: 20;
+    margin-right: 20;
 }
 
 .logo{
@@ -32,4 +34,11 @@ Button{
     margin: 40 0;
     horizontal-align:center;
     color: #616161;
+    
+}
+
+.labeltext{
+    vertical-align: center;
+    horizontal-align: center;
+    height: 100%;
 }

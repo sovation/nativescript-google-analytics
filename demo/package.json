@@ -1,16 +1,16 @@
 {
-	"nativescript": {
-		"id": "org.nativescript.googleanalytics",
-		"tns-ios": {
-			"version": "1.7.0"
-		},
-		"tns-android": {
-			"version": "1.7.1"
-		}
-	},
-	"dependencies": {
-		"nativescript-google-analytics": "file:../plugin",
-		"nativescript-snackbar": "^1.0.3",
-		"tns-core-modules": "^1.7.1"
-	}
+  "nativescript": {
+    "id": "org.nativescript.googleanalytics",
+    "tns-ios": {
+      "version": "1.7.0"
+    },
+    "tns-android": {
+      "version": "1.7.1"
+    }
+  },
+  "dependencies": {
+    "nativescript-google-analytics": "file:../plugin",
+    "nativescript-snackbar": "^1.0.3",
+    "tns-core-modules": "^1.7.1"
+  }
 }

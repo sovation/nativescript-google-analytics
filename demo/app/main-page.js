@@ -44,6 +44,7 @@ function wireEvents(){
             value: args.direction 
         });
         showMessage("Swipe Direction: " + args.direction);
+        console.log("Swipe Direction: " + args.direction);
     });
     
    page.getViewById("genstureLongTap").on("longPress", function (args) {
@@ -53,6 +54,7 @@ function wireEvents(){
             label: "Long press on screen"
         });
         showMessage("Long Press");
+        console.log("Long Press");
     });
 }
 

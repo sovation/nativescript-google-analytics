@@ -38,7 +38,9 @@ if (application.ios) {
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
             //Module Code to initalize
-            googleAnalytics.initalize("UA-74227193-1");
+            googleAnalytics.initalize({
+                trackingId: "UA-XXXXXXX-1"
+            });
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
@@ -49,7 +51,9 @@ if (application.ios) {
     //ANDROID
     application.on(application.launchEvent, function (args) {
         //Module Code to initalize
-        googleAnalytics.initalize("UA-74227193-1");
+        googleAnalytics.initalize({
+                trackingId: "UA-XXXXXXX-1"
+            });
     });
 
 }
@@ -59,7 +63,17 @@ application.start();
 ```
 
 
-## Optional Methods ##
+## Methods ##
+### Log Event ###
+``` js
+// category and action are not optional, label and value are
+googleAnalytics.initalize(
+    {
+      trackingId: "UA-XXXXXXX-1",
+      logging: false, //Default false, should not be used in production
+    });
+```
+
 ### Log Event ###
 ``` js
 // category and action are not optional, label and value are

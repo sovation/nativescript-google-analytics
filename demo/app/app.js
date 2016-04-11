@@ -20,7 +20,11 @@ if (application.ios) {
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
             //Module Code to initalize
-            googleAnalytics.initalize("UA-74227193-1");
+            googleAnalytics.initalize({
+                trackingId: "UA-74227193-1",
+                userId: "steve",
+                logging: true
+            });
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
@@ -31,7 +35,11 @@ if (application.ios) {
     //ANDROID
     application.on(application.launchEvent, function (args) {
         //Module Code to initalize
-        googleAnalytics.initalize("UA-74227193-1");
+        googleAnalytics.initalize({
+            trackingId: "UA-74227193-1",
+            userId: "steve",
+            logging: true
+        });
     });
 
 }

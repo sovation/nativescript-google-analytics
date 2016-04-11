@@ -92,3 +92,8 @@ googleAnalytics.logEvent(
 // category and action are not optional, label and value are
 googleAnalytics.logView("Secondary-Page");
 ```
+
+### Flush Message queue (dispatch)  ###
+``` js
+googleAnalytics.dispatch();
+```

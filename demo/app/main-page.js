@@ -33,6 +33,9 @@ exports.secondaryActionTap = function(args) {
     frameModule.topmost().navigate("secondary-page")
 }
 
+exports.onDispatchQueue = function (args) {
+    googleAnalytics.dispatch();
+}
 
 function wireEvents(){
     

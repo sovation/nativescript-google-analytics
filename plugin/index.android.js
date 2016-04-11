@@ -55,9 +55,8 @@ exports.getTracker = function () {
     return global.gaTracker;
 }
 
-exports.dispatch = dispatch;
-
-function dispatch(){
+exports.dispatch = function (args){
     console.log("Flushing dispatch event queue");
     global.gaInstance.dispatchLocalHits();
-}
+};
+

@@ -24,6 +24,7 @@ exports.logView = function(viewname){
 }
 
 exports.logEvent = function(data){
+    console.log("Analytics Event:" + JSON.stringify(data));
     var event = GAIDictionaryBuilder.createEventWithCategoryActionLabelValue(
       data.category,
       data.action,

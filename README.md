@@ -6,6 +6,9 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.1.7 ###
+* Enable Instant dispatch on android
+
 ### 0.1.5 ###
 * Android was missing the include.gradle file
 

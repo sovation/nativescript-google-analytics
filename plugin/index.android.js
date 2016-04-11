@@ -17,6 +17,7 @@ exports.logView = function(viewname){
 }
 
 exports.logEvent = function(data){
+    console.log("Analytics Event:" + JSON.stringify(data));
     var event = new com.google.android.gms.analytics.HitBuilders.EventBuilder().setCategory(data.category).setAction(data.action);
 
     if(data.label && data.label !== "" && data.label !== null)

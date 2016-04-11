@@ -8,6 +8,7 @@
 ## Release Notes ##
 ### 0.1.9 ###
 * Breaking Change: Init method now takes an object, not just a string
+* Fixed Dispatch to be configurable, and exposed a method to flush
 
 ### 0.1.7 ###
 * Enable Instant dispatch on android

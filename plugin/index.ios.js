@@ -8,8 +8,8 @@ exports.initalize = function (trackingId) {
     global.tracker = defaultTracker;
 
     // Only use this in debug mode
-    var logLevel = 4; //kGAILogLevelVerbose
-    gai.logger.logLevel = logLevel;
+    //var logLevel = 4; //kGAILogLevelVerbose
+    //gai.logger.logLevel = logLevel;
 }
 
 exports.logView = function(viewname){

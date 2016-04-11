@@ -7,6 +7,9 @@
 
 ## Release Notes ##
 ### 0.1.5 ###
+* Android was missing the include.gradle file
+
+### 0.1.5 ###
 * Updated sending code to use new {N} Protocol code
 
 ### 0.1.4 ###

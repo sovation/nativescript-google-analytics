@@ -7,7 +7,9 @@ exports.initalize = function (config) {
     var defaultTracker = gai.trackerWithTrackingId(config.trackingId);
 
     
-    gai.dispatchInterval = (config.dispatchInterval) ? config.dispatchInterval : 30; 
+    if(config.dispatchInterval){
+        gai.dispatchInterval = config.dispatchInterval;
+    } 
 
     /*
     if(config.userId){

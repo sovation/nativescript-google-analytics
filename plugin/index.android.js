@@ -8,8 +8,7 @@ exports.initalize = function (config) {
     var tracker = analytics.newTracker(config.trackingId);
     
     if(config.dispatchInterval){
-        var interval = (config.dispatchInterval) ? config.dispatchInterval : 30;
-        gai.setLocalDispatchPeriod(interval);
+        gai.setLocalDispatchPeriod(config.dispatchInterval);
     }
     
     /*

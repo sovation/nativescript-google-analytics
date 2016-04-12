@@ -110,7 +110,7 @@ googleAnalytics.logException("Ergmagerd excerpshern");
 
 ### Log timings  ###
 ``` js
-    //OPTION 1: Auto
+    //OPTION 1: Auto (Time is stored internally, just call stopTimer when you're done)
     googleAnalytics.startTimer("Logo Timer", {
                                 category: "Animations",
                                 name: "Rotate the logo", //Optional

@@ -107,3 +107,13 @@ googleAnalytics.logException({
 //or
 googleAnalytics.logException("Ergmagerd excerpshern");
 ```
+
+### Log timings  ###
+``` js
+    googleAnalytics.logTimingEvent({
+        category: "Animations",
+        value: diffMilliseconds, //Milliseconds, example 4000
+        name: "Rotate the logo", //Optional
+        label: "Some Label" //Optional
+    }); 
+```

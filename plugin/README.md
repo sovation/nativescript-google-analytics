@@ -110,17 +110,17 @@ googleAnalytics.logException("Ergmagerd excerpshern");
 
 ### Log timings  ###
 ``` js
-    //Option 1: Auto
+    //OPTION 1: Auto
     googleAnalytics.startTimer("Logo Timer", {
                                 category: "Animations",
-                                name: "Rotate the logo",
-                                label: (application.ios) ? "iOS" : "Android"
+                                name: "Rotate the logo", //Optional
+                                label: (application.ios) ? "iOS" : "Android"  //Optional
                             });
-    /* TIME PASSES */
+    /* ... time passes as you do something ... */
     googleAnalytics.stopTimer("Logo Timer");
     
 
-    //Option 2: Raw, calculate and send yourself
+    //OPTION 2: Raw, calculate and send yourself
     googleAnalytics.logTimingEvent({
         category: "Animations",
         value: diffMilliseconds, //Milliseconds, example 4000

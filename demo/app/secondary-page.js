@@ -30,10 +30,15 @@ exports.onLogException = function (args) {
 }
 
 exports.onLogTimingEvent = function (args) {
-   var startTime = new Date();
+   googleAnalytics.startTimer("Logo Timer", {
+                                    category: "Animations",
+                                    name: "Rotate the logo",
+                                    label: (application.ios) ? "iOS" : "Android"
+                                });
+   
+   
    var logo = page.getViewById("logo");
    logo.animate({
-        opacity: 0.75,
         rotate: 360,
         duration: 2200,
         delay: 100,
@@ -41,15 +46,7 @@ exports.onLogTimingEvent = function (args) {
         curve: "easeIn"
     })
     .then(function () {
-        var endTime = new Date();
-        var diffMilliseconds = endTime.getTime() - startTime.getTime();
-        
-        googleAnalytics.logTimingEvent({
-            category: "Animations",
-            value: diffMilliseconds,
-            name: "Rotate the logo",
-            label: (application.ios) ? "iOS" : "Android"
-        }); 
+        googleAnalytics.stopTimer("Logo Timer");
         
         snackbar.simple("Logged timed event");
     });

@@ -29,6 +29,9 @@ exports.initalize = function (config) {
         
         global.gaTracker = defaultTracker;
         global.gaInstance = gai;
+        
+        //setup timers
+        global.gaTimers = [];
     }else{
         throw "Sup boss, how do you plan on tracking with no trackingId?  Please add it to the config";
     }
@@ -85,7 +88,62 @@ exports.logException = function (data) {
     GAITracker.prototype.send.call(global.gaTracker, builtEvent);
 }
 
+
+
+exports.dispatch = function (args){
+    console.log("Analytics Flushing dispatch event queue");
+    GAI.sharedInstance().dispatch();
+};
+
+
+exports.getTracker = function () {
+    return global.gaTracker;
+}
+
+
+
+//## TIMING FUNCTIONS ##
+//Raw Timer
 exports.logTimingEvent = function(data){
+    logTiming(data);
+}
+
+//Start
+exports.startTimer = function (timerName, data) {
+    global.gaTimers.push({ 
+        name: timerName,
+        value: new Date(),
+        data: data
+    })
+}
+
+//End
+exports.stopTimer = function (timerName) {
+    var endTime = new Date();
+    var foundTimer = false;
+
+    //Find the timer
+    for(var i = 0; i < global.gaTimers.length; i++){
+        var timer = global.gaTimers[i];
+        if(timer.name == timerName){
+            foundTimer = true;
+
+            //set timer
+            timer.data.value = endTime.getTime() - timer.value.getTime();
+
+            //Process event
+            logTiming(timer.data);
+            global.gaTimers.splice(i,1);
+            break;
+        }
+    }   
+    
+    if(!foundTimer){
+        console.log("Unable to find timer start event named " + timerName);
+    }
+}
+
+function logTiming(data){
     var event = GAIDictionaryBuilder.createTimingWithCategoryIntervalNameLabel(
       data.category,
       data.value,
@@ -102,14 +160,3 @@ exports.logTimingEvent = function(data){
     else
         console.log("Unable to locate tracker to log event");
 }
-
-exports.dispatch = function (args){
-    console.log("Analytics Flushing dispatch event queue");
-    GAI.sharedInstance().dispatch();
-};
-
-
-exports.getTracker = function () {
-    return global.gaTracker;
-}
-

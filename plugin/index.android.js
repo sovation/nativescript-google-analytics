@@ -23,6 +23,9 @@ exports.initalize = function (config) {
         
         global.gaInstance = gai;
         global.gaTracker = tracker;
+        
+        //setup timers
+        global.gaTimers = [];
     }else{
         throw "Sup boss, how do you plan on tracking with no trackingId?  Please add it to the config";
     }
@@ -73,7 +76,61 @@ exports.logException = function (data) {
     global.gaTracker.send(builtEvent);
 }
 
+
+exports.dispatch = function (args){
+    console.log("Flushing dispatch event queue");
+    global.gaInstance.dispatchLocalHits();
+};
+
+
+exports.getTracker = function () {
+    return global.gaTracker;
+}
+
+
+//## TIMING FUNCTIONS ##
+//Raw Timer
 exports.logTimingEvent = function (data) {
+    logTiming(data);
+}
+
+//Start
+exports.startTimer = function (timerName, data) {
+    global.gaTimers.push({ 
+        name: timerName,
+        value: new Date(),
+        data: data
+    })
+}
+
+//End
+exports.stopTimer = function (timerName) {
+    var endTime = new Date();
+    var foundTimer = false;
+
+    //Find the timer
+    for(var i = 0; i < global.gaTimers.length; i++){
+        var timer = global.gaTimers[i];
+        if(timer.name == timerName){
+            foundTimer = true;
+
+            //set timer
+            timer.data.value = endTime.getTime() - timer.value.getTime();
+            
+            //Process event
+            logTiming(timer.data);
+            global.gaTimers.splice(i,1);
+            break;
+        }
+    }   
+    
+    if(!foundTimer){
+        console.log("Unable to find timer start event named " + timerName);
+    }
+}
+
+
+function logTiming(data){
     console.log("Analytics Timing Event:" + JSON.stringify(data) + " at " + new Date());
     var event = new com.google.android.gms.analytics.HitBuilders.TimingBuilder().setCategory(data.category).setValue(data.value);
  
@@ -87,14 +144,3 @@ exports.logTimingEvent = function (data) {
     
     global.gaTracker.send(builtEvent); 
 }
-
-exports.dispatch = function (args){
-    console.log("Flushing dispatch event queue");
-    global.gaInstance.dispatchLocalHits();
-};
-
-
-exports.getTracker = function () {
-    return global.gaTracker;
-}
-

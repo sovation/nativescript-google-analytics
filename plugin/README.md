@@ -97,3 +97,13 @@ googleAnalytics.logView("Secondary-Page");
 ``` js
 googleAnalytics.dispatch();
 ```
+
+### Log exceptions  ###
+``` js
+googleAnalytics.logException({
+        description: "Cat tried to divide by 0...",
+        fatal: true //Optional, default false... if true will be a "Crash" in GA.  False is an "Exception"
+    });
+//or
+googleAnalytics.logException("Ergmagerd excerpshern");
+```

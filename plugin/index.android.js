@@ -4,7 +4,6 @@ var application = require("application");
 exports.initalize = function (config) {
     if(config.trackingId){
         var context = application.android.context;
-        
         var gai = com.google.android.gms.analytics.GoogleAnalytics.getInstance(context);
         var tracker = gai.newTracker(config.trackingId);
         
@@ -51,12 +50,51 @@ exports.logEvent = function(data){
     global.gaTracker.send(builtEvent);    
 }
 
-exports.getTracker = function () {
-    return global.gaTracker;
+
+exports.logException = function (data) {
+    var description = "";
+    var fatal = "";
+    
+    if( typeof data === 'object') {
+        description = data.description;
+        fatal = (data.fatal) ? data.fatal : false;
+    }
+    else {
+        //not object
+        description = data;
+        fatal = false;
+    }
+    
+    console.log("Logging GA Exception: " + description);
+
+    var event = new com.google.android.gms.analytics.HitBuilders.ExceptionBuilder().setDescription(description).setFatal(fatal);
+    var builtEvent = event.build();
+    
+    global.gaTracker.send(builtEvent);
+}
+
+exports.logTimingEvent = function (data) {
+    console.log("Analytics Timing Event:" + JSON.stringify(data) + " at " + new Date());
+    var event = new com.google.android.gms.analytics.HitBuilders.TimingBuilder().setCategory(data.category).setValue(data.value);
+ 
+    if(data.name && data.name !== "" && data.name !== null)
+        event.setVariable(data.name);   
+    
+    if(data.label && data.label !== "" && data.label !== null)
+        event.setLabel(data.label);
+    
+    var builtEvent = event.build();
+    
+    global.gaTracker.send(builtEvent); 
 }
 
 exports.dispatch = function (args){
     console.log("Flushing dispatch event queue");
     global.gaInstance.dispatchLocalHits();
 };
+
+
+exports.getTracker = function () {
+    return global.gaTracker;
+}
 

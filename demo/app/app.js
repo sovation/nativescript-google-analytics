@@ -1,6 +1,7 @@
 var application = require("application");
 var googleAnalytics = require("nativescript-google-analytics");
-application.mainModule = "main-page";
+//application.mainModule = "main-page";
+application.mainModule = "secondary-page";
 application.cssFile = "./app.css";
 
 if (application.ios) {

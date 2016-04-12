@@ -13,6 +13,52 @@ exports.pageLoaded = function(args) {
     snackbar.simple("Logged view of secondary-page");
 }
 
+exports.onLogException = function (args) {
+    /*
+    googleAnalytics.logException({
+        description: "Fat Fingered it...",
+        fatal: true
+    });
+    */
+    var message = "Ergmagerd iOS excerpshern";
+    
+    if(application.android)
+        message = "Ergmagerd droid excerpshern";
+    
+    googleAnalytics.logException(message);
+    snackbar.simple(message + " Logged");
+}
+
+exports.onLogTimingEvent = function (args) {
+   var startTime = new Date();
+   var logo = page.getViewById("logo");
+   logo.animate({
+        opacity: 0.75,
+        rotate: 360,
+        duration: 2200,
+        delay: 100,
+        iterations: 2,
+        curve: "easeIn"
+    })
+    .then(function () {
+        var endTime = new Date();
+        var diffMilliseconds = endTime.getTime() - startTime.getTime();
+        
+        googleAnalytics.logTimingEvent({
+            category: "Animations",
+            value: diffMilliseconds,
+            name: "Rotate the logo",
+            label: (application.ios) ? "iOS" : "Android"
+        }); 
+        
+        snackbar.simple("Logged timed event");
+    });
+}
+
 exports.goBackClick = function(args) {
   frameModule.topmost().goBack();
+}
+
+exports.onDispatchQueue = function (args) {
+    googleAnalytics.dispatch();
 }

@@ -6,6 +6,10 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.2.0 ###
+* Exception Logging API
+* Timing logging API
+
 ### 0.1.9 ###
 * Breaking Change: Init method now takes an object, not just a string
 * Fixed Dispatch to be configurable, and exposed a method to flush

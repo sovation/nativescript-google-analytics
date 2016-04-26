@@ -6,6 +6,9 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.2.5 ###
+* Added Typescript definition file
+
 ### 0.2.3 ###
 * Timing API Start\End functions
 

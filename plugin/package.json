@@ -1,6 +1,6 @@
 {
   "name": "nativescript-google-analytics",
-  "version": "v0.2.4",
+  "version": "v0.2.5",
   "description": "Integrate native google analytics iOS and Android widgets into NativeScript",
   "main": "index.js",
   "nativescript": {

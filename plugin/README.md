@@ -71,7 +71,10 @@ googleAnalytics.initalize(
     {
       trackingId: "UA-XXXXXXX-1",
       dispatchInterval: 30, //(Value in seconds)...Default Android is 30 minutes, default iOS is 2 minutes (120 seconds).  Disable by setting to 0.
-      logging: false, //Default false, should not be used in production
+      logging: {
+         native: false, //Default false, should not be used in production
+         console: false   
+      }
     });
 ```
 

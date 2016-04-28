@@ -6,6 +6,10 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.2.7 ###
+* TS File fix
+* Updated logging options
+
 ### 0.2.6 ###
 * Enabled Exception Reporting on the Android side "enableExceptionReporting"
 

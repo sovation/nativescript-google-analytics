@@ -1,5 +1,8 @@
 var application = require("application");
 
+var settings = {
+    logging: null
+};
 
 exports.initalize = function (config) {
     if(config.trackingId){
@@ -23,8 +26,12 @@ exports.initalize = function (config) {
         */
 
         if(config.logging){
-            var logLevel = 4; //kGAILogLevelVerbose
-            gai.logger.logLevel = logLevel;
+            settings.logging = config.logging;
+             
+             if(config.logging.native){
+                var logLevel = 4; //kGAILogLevelVerbose
+                gai.logger.logLevel = logLevel;
+             }
         }
         
         global.gaTracker = defaultTracker;
@@ -38,7 +45,7 @@ exports.initalize = function (config) {
 }
 
 exports.logView = function(viewname){
-    console.log("Analytics Event: Log Screen View: " + viewname + " at " + new Date());
+    logToConsole("Analytics Event: Log Screen View: " + viewname + " at " + new Date());
     
     var gAIScreenName =  "&cd"; //kGAIScreenName
     var event = GAIDictionaryBuilder.createScreenView().setForKey(viewname, gAIScreenName);
@@ -47,11 +54,11 @@ exports.logView = function(viewname){
     if(global.gaTracker)
         GAITracker.prototype.send.call(global.gaTracker, builtEvent);
     else
-        console.log("Unable to locate tracker to log view");
+        logToConsole("Unable to locate tracker to log view");
 }
 
 exports.logEvent = function(data){
-    console.log("Analytics Event:" + JSON.stringify(data) + " at " + new Date());
+    logToConsole("Analytics Event:" + JSON.stringify(data) + " at " + new Date());
     var event = GAIDictionaryBuilder.createEventWithCategoryActionLabelValue(
       data.category,
       data.action,
@@ -63,7 +70,7 @@ exports.logEvent = function(data){
     if(global.gaTracker)
         GAITracker.prototype.send.call(global.gaTracker, builtEvent);
     else
-        console.log("Unable to locate tracker to log event");
+        logToConsole("Unable to locate tracker to log event");
 }
 
 exports.logException = function (data) {
@@ -80,7 +87,7 @@ exports.logException = function (data) {
         fatal = false;
     }
     
-    console.log("Analytics Logging Exception: " + description);
+    logToConsole("Analytics Logging Exception: " + description);
 
     var event = GAIDictionaryBuilder.createExceptionWithDescriptionWithFatal(description, fatal);
     var builtEvent = event.build();
@@ -91,7 +98,7 @@ exports.logException = function (data) {
 
 
 exports.dispatch = function (args){
-    console.log("Analytics Flushing dispatch event queue");
+    logToConsole("Analytics Flushing dispatch event queue");
     GAI.sharedInstance().dispatch();
 };
 
@@ -139,7 +146,7 @@ exports.stopTimer = function (timerName) {
     }   
     
     if(!foundTimer){
-        console.log("Unable to find timer start event named " + timerName);
+        logToConsole("Unable to find timer start event named " + timerName);
     }
 }
 
@@ -155,8 +162,16 @@ function logTiming(data){
 
     if(global.gaTracker){
         GAITracker.prototype.send.call(global.gaTracker, builtEvent);
-        console.log("Analytics Timing Event:" + JSON.stringify(data) + " at " + new Date());
+        logToConsole("Analytics Timing Event:" + JSON.stringify(data) + " at " + new Date());
     }
     else
-        console.log("Unable to locate tracker to log event");
+        logToConsole("Unable to locate tracker to log event");
+}
+
+function logToConsole(message){
+    if(settings.logging){
+        if(settings.logging.console){
+            console.log(message);
+        }
+    }
 }

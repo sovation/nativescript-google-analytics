@@ -128,3 +128,11 @@ googleAnalytics.logException("Ergmagerd excerpshern");
         label: "Some Label" //Optional
     }); 
 ```
+
+## Issues
+#### Android
+Error: Could not find com.google.android.gms:play-services-analytics:8.4.0
+
+Resolution:
+*Open the Android Studio SDK manager, make sure all of your build tools are up to date. Then make sure your Google Play Services and Google Repository packages are up to date. In the Android Studio sdk manager, you'll find these under the "SDK Tools" tab. If you are using the standalone sdk manager, you would scroll down to the "Extras" section at the bottom and update them there 
+*

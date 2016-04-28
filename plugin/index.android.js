@@ -6,6 +6,7 @@ exports.initalize = function (config) {
         var context = application.android.context;
         var gai = com.google.android.gms.analytics.GoogleAnalytics.getInstance(context);
         var tracker = gai.newTracker(config.trackingId);
+        tracker.enableExceptionReporting(true);
         
         if(config.dispatchInterval){
             gai.setLocalDispatchPeriod(config.dispatchInterval);

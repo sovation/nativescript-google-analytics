@@ -1,17 +1,17 @@
 {
   "nativescript": {
     "id": "org.nativescript.googleanalytics",
-    "tns-android": {
+    "tns-ios": {
       "version": "2.0.0"
     },
-    "tns-ios": {
+    "tns-android": {
       "version": "2.0.0"
     }
   },
   "dependencies": {
     "nativescript-google-analytics": "file:../plugin",
     "nativescript-snackbar": "^1.0.3",
-    "tns-core-modules": "^2.0.0"
+    "tns-core-modules": "^2.0.1"
   },
   "devDependencies": {
     "babel-traverse": "6.7.6",

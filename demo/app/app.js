@@ -41,6 +41,9 @@ function initAnalytics(){
     googleAnalytics.initalize({
                 trackingId: "UA-74227193-1",
                 dispatchInterval: 5,
-                logging: true
+                logging: {
+                    native: true,
+                    console: false
+                }
             });
 }

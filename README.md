@@ -1,11 +1,18 @@
 # Nativescript Google Analytics Plugin #
 
-* [Plugin](https://github.com/sitefinitysteve/nativescript-googleanalytics/tree/master/nativescript-google-analytics)
+* [Plugin](https://github.com/sitefinitysteve/nativescript-googleanalytics/tree/master/plugin)
 * [Demo](https://github.com/sitefinitysteve/nativescript-googleanalytics/tree/master/demo)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.2.8 ###
+* Remove specific version of play-services on android
+
+### 0.2.7 ###
+* TS File fix
+* Updated logging options
+
 ### 0.2.6 ###
 <<<<<<< HEAD
 * Fixed Typescript definition file

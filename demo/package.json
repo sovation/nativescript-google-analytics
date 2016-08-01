@@ -5,13 +5,13 @@
       "version": "2.0.0"
     },
     "tns-android": {
-      "version": "2.0.0"
+      "version": "2.1.1"
     }
   },
   "dependencies": {
     "nativescript-google-analytics": "file:../plugin",
     "nativescript-snackbar": "^1.0.3",
-    "tns-core-modules": "^2.0.1"
+    "tns-core-modules": "^2.1.0"
   },
   "devDependencies": {
     "babel-traverse": "6.7.6",

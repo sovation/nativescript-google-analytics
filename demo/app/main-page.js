@@ -30,7 +30,7 @@ exports.secondaryActionTap = function(args) {
       action: "Click",
       label: "Secondary Button"
     });
-    frameModule.topmost().navigate("secondary-page")
+    frameModule.topmost().navigate("secondary-page");
 }
 
 exports.onDispatchQueue = function (args) {

@@ -10,7 +10,7 @@ exports.pageLoaded = function(args) {
     
     
     googleAnalytics.logView("Secondary-Page");
-    snackbar.simple("Logged view of secondary-page");
+    //snackbar.simple("Logged view of secondary-page");
 }
 
 exports.onLogException = function (args) {

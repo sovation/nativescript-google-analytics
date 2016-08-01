@@ -14,13 +14,13 @@ buildscript {
     
     dependencies {
         classpath 'com.android.tools.build:gradle:2.0.0-beta6'
-        classpath 'com.google.gms:google-services:2.0.0-beta6'
+        classpath "com.google.gms:google-services:3.0.0"
     }
 }
 
 dependencies {
     // [START gms_compile]
-    compile 'com.google.android.gms:play-services-analytics:+'
+    compile 'com.google.android.gms:play-services-analytics:9.2.0'
     // [END gms_compile]
 }
 

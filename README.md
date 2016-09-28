@@ -1,11 +1,15 @@
 # Nativescript Google Analytics Plugin #
 
-* [Plugin](https://github.com/sitefinitysteve/nativescript-googleanalytics/tree/master/plugin)
-* [Demo](https://github.com/sitefinitysteve/nativescript-googleanalytics/tree/master/demo)
+* [Plugin](https://github.com/sitefinitysteve/nativescript-google-analytics/tree/master/plugin)
+* [Demo](https://github.com/sitefinitysteve/nativescript-googlea-nalytics/tree/master/demo)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.3.0 ###
+* Rename Podfile dir
+* Update repo name to match plugin (OOPS)
+
 ### 0.2.9 ###
 * Update Gradle refs
 * Fix demo nav

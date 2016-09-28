@@ -1,6 +1,6 @@
 {
   "name": "nativescript-google-analytics",
-  "version": "v0.2.9",
+  "version": "v0.3.0",
   "description": "Integrate native google analytics iOS and Android widgets into NativeScript",
   "main": "index.js",
   "nativescript": {
@@ -11,7 +11,7 @@
   },
 "repository": {
     "type": "git",
-    "url": "https://github.com/sitefinitysteve/nativescript-googleanalytics.git"
+    "url": "https://github.com/sitefinitysteve/nativescript-google-analytics.git"
   },
   "keywords": [
     "NativeScript",
@@ -30,6 +30,6 @@
   },
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
-  "bugs": "https://github.com/sitefinitysteve/nativescript-googleanalytics/issues",
-  "homepage": "https://github.com/sitefinitysteve/nativescript-googleanalytics"
+  "bugs": "https://github.com/sitefinitysteve/nativescript-google-analytics/issues",
+  "homepage": "https://github.com/sitefinitysteve/nativescript-google-analytics"
 }

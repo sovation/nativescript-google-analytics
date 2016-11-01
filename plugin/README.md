@@ -13,8 +13,8 @@ tns plugin add nativescript-google-analytics
 * Click the "Get a Configuration File" instrutctions
 * Add the platform specific config file you just downloaded to its respective App_Resources/{platform} folder
 
-
 ## Initalize the tracker in app.js ##
+### PLAIN JS ###
 ``` js
 var application = require("application");
 var googleAnalytics = require("nativescript-google-analytics");
@@ -22,7 +22,7 @@ application.mainModule = "main-page";
 application.cssFile = "./app.css";
 
 if (application.ios) {
-    //IOS
+    //iOS
     var __extends = this.__extends || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -62,6 +62,44 @@ application.start();
 
 ```
 
+#### Typescript ###
+```js
+var application = require("application");
+import * as googleAnalytics from "nativescript-google-analytics";
+application.mainModule = "main-page";
+application.cssFile = "./app.css";
+
+if (application.ios) {
+    //iOS
+    class MyDelegate extends UIResponder implements UIApplicationDelegate {
+        public static ObjCProtocols = [UIApplicationDelegate];
+
+        applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: NSDictionary): boolean {
+            googleAnalytics.initalize({
+                trackingId: "UA-XXXXXXX-1"
+            });
+            return true;
+        }
+
+    }
+
+    application.ios.delegate = MyDelegate;
+
+}else{
+    //ANDROID
+    application.on(application.launchEvent, function (args) {
+        //Module Code to initalize
+        googleAnalytics.initalize({
+                trackingId: "UA-XXXXXXX-1"
+            });
+    });
+
+}
+
+application.start();
+
+
+```
 
 ## Methods ##
 ### Initalize Options ###

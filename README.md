@@ -6,6 +6,9 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
 
 ## Release Notes ##
+### 0.3.2 ###
+* Add UserId support
+
 ### 0.3.0 ###
 * Rename Podfile dir
 * Update repo name to match plugin (OOPS)

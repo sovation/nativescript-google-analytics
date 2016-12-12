@@ -37,10 +37,7 @@ if (application.ios) {
         }
         
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
-            //Module Code to initalize
-            googleAnalytics.initalize({
-                trackingId: "UA-XXXXXXX-1"
-            });
+            initAnalytics(); //Module Code to initalize
         };
         
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
@@ -50,15 +47,24 @@ if (application.ios) {
 }else{
     //ANDROID
     application.on(application.launchEvent, function (args) {
-        //Module Code to initalize
-        googleAnalytics.initalize({
-                trackingId: "UA-XXXXXXX-1"
-            });
+        initAnalytics(); //Module Code to initalize
     });
 
 }
 
 application.start();
+
+function initAnalytics(){
+    googleAnalytics.initalize({
+                trackingId: "UA-XXXXXXXX-1", //YOUR Id from GA
+                //userId: "9ac7a034-ffde-4783-8374-f78b3df39d32", //Optional
+                dispatchInterval: 5,
+                logging: {
+                    native: true,
+                    console: false
+                }
+            });
+}
 
 ```
 
@@ -75,9 +81,7 @@ if (application.ios) {
         public static ObjCProtocols = [UIApplicationDelegate];
 
         applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: NSDictionary): boolean {
-            googleAnalytics.initalize({
-                trackingId: "UA-XXXXXXX-1"
-            });
+            initAnalytics(); //Module Code to initalize
             return true;
         }
 
@@ -88,16 +92,24 @@ if (application.ios) {
 }else{
     //ANDROID
     application.on(application.launchEvent, function (args) {
-        //Module Code to initalize
-        googleAnalytics.initalize({
-                trackingId: "UA-XXXXXXX-1"
-            });
+        initAnalytics(); //Module Code to initalize
     });
 
 }
 
 application.start();
 
+function initAnalytics(){
+    googleAnalytics.initalize({
+                trackingId: "UA-XXXXXXXX-1", //YOUR Id from GA
+                //userId: "9ac7a034-ffde-4783-8374-f78b3df39d32", //Optional
+                dispatchInterval: 5,
+                logging: {
+                    native: true,
+                    console: false
+                }
+            });
+}
 
 ```
 
@@ -108,6 +120,7 @@ application.start();
 googleAnalytics.initalize(
     {
       trackingId: "UA-XXXXXXX-1",
+      userId: "(some userid value)", //Optional! Needs to be enabled on the tracking account: https://support.google.com/analytics/answer/3123666#FindTheUserID
       dispatchInterval: 30, //(Value in seconds)...Default Android is 30 minutes, default iOS is 2 minutes (120 seconds).  Disable by setting to 0.
       logging: {
          native: false, //Default false, should not be used in production

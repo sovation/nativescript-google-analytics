@@ -2,8 +2,10 @@ var application = require("application");
 var viewModel = require("./main-view-model");
 var googleAnalytics = require("nativescript-google-analytics");
 var frameModule = require("ui/frame");
-var snackbar = require("nativescript-snackbar");
+var snackbarModule = require("nativescript-snackbar");
 var page;
+
+var snackbar = new snackbarModule.SnackBar();
 
 exports.pageLoaded = function(args) {
     page = args.object;

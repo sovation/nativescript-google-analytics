@@ -15,11 +15,12 @@ exports.initalize = function (config) {
             gai.setLocalDispatchPeriod(config.dispatchInterval);
         }
         
-        /*
+        
         if(config.userId){
-            tracker.setClientId(config.userId);
+            var gAIUserId = "&uid"; //kGAIUserId
+            tracker.set(gAIUserId, config.userId);
         }
-        */
+        
         
         if(config.logging){
             settings.logging = config.logging;

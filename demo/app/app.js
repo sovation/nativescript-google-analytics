@@ -38,8 +38,10 @@ if (application.ios) {
 application.start();
 
 function initAnalytics(){
+    debugger;
     googleAnalytics.initalize({
                 trackingId: "UA-74227193-1",
+                userId: "9ac7a034-ffde-4783-8374-f78b3df39d32",
                 dispatchInterval: 5,
                 logging: {
                     native: true,

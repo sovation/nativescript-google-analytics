@@ -18,12 +18,10 @@ exports.initalize = function (config) {
             gai.dispatchInterval = config.dispatchInterval;
         } 
 
-        /*
         if(config.userId){
             var gAIUserId = "&uid"; //kGAIUserId
-            global.gaTracker.setValueForKey(gAIUserId, config.userId);
+            GAITracker.prototype.setValue.call(defaultTracker, gAIUserId, config.userId);
         }
-        */
 
         if(config.logging){
             settings.logging = config.logging;

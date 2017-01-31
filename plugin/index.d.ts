@@ -1,6 +1,7 @@
 export interface InitalizeOptions {
     dispatchInterval?:number;
     logging?: boolean;
+    enableDemographics?: boolean;
     trackingId: string;
 }
 

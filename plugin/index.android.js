@@ -11,10 +11,8 @@ exports.initalize = function (config) {
         var tracker = gai.newTracker(config.trackingId);
         tracker.enableExceptionReporting(true);
         
-        if (config.hasOwnProperty('enableDemographics')) {
-            if (config.enableDemographics) {
-                tracker.enableAdvertisingIdCollection(true);
-            }
+        if (config.enableDemographics) {
+            tracker.enableAdvertisingIdCollection(true);
         }
         
         if(config.dispatchInterval){

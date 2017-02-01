@@ -120,14 +120,21 @@ function initAnalytics(){
 googleAnalytics.initalize(
     {
       trackingId: "UA-XXXXXXX-1",
-      userId: "(some userid value)", //Optional! Needs to be enabled on the tracking account: https://support.google.com/analytics/answer/3123666#FindTheUserID
       dispatchInterval: 30, //(Value in seconds)...Default Android is 30 minutes, default iOS is 2 minutes (120 seconds).  Disable by setting to 0.
       logging: {
          native: false, //Default false, should not be used in production
          console: false   
       }
+      //Optional Params
+      enableDemographics: true, 
+      userId: "(some userid value)", 
     });
 ```
+
+### Optional initalize parameters
+* enableDemographics: boolean [iOS](https://developers.google.com/analytics/devguides/collection/ios/v3/display-features) [Android](https://developers.google.com/android/reference/com/google/android/gms/analytics/Tracker.html#enableAdvertisingIdCollection(boolean))
+* userId: [Needs to be enabled on the tracking account](https://support.google.com/analytics/answer/3123666#FindTheUserID)
+
 
 ### Log Event ###
 ``` js

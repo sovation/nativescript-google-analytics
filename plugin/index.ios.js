@@ -13,11 +13,9 @@ exports.initalize = function (config) {
         gai.trackUncaughtExceptions = true;
         var defaultTracker = gai.trackerWithTrackingId(config.trackingId);
 
-        if (config.hasOwnProperty('enableDemographics')) {
-            if (config.enableDemographics) {
-                defaultTracker.allowIDFACollection = true;
-            }
-        }        
+        if (config.enableDemographics) {
+            defaultTracker.allowIDFACollection = true;
+        }
 
         if(config.dispatchInterval){
             gai.dispatchInterval = config.dispatchInterval;

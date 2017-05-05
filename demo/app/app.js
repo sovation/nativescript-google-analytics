@@ -1,7 +1,5 @@
 var application = require("application");
 var googleAnalytics = require("nativescript-google-analytics");
-application.mainModule = "main-page";
-//application.mainModule = "secondary-page";
 application.cssFile = "./app.css";
 
 if (application.ios) {
@@ -35,7 +33,7 @@ if (application.ios) {
 
 }
 
-application.start();
+application.start("main-page");
 
 function initAnalytics(){
     googleAnalytics.initalize({

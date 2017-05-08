@@ -5,8 +5,8 @@
   "main": "index.js",
   "nativescript": {
     "platforms": {
-      "android": "1.7.0",
-      "ios": "1.7.0"
+      "android": "3.0.0",
+      "ios": "3.0.0"
     }
   },
 "repository": {
@@ -23,6 +23,12 @@
     "iOS",
     "Android"
   ],
+  "devDependencies": {
+    "tns-core-modules": "^3.0.0"
+  },
+  "peerDependencies": {
+    "tns-core-modules": "^3.0.0"
+  },
   "author": {
     "name": "Steve McNiven-Scott",
     "email": "steve@sitefinitysteve.com",

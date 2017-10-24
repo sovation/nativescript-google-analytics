@@ -1,4 +1,3 @@
-var application = require("application");
 
 var settings = {
     logging: null
@@ -6,37 +5,37 @@ var settings = {
 
 exports.initalize = function (config) {
     if(config.trackingId){
-        var context = application.android.context;
+        var context = getContext();
         var gai = com.google.android.gms.analytics.GoogleAnalytics.getInstance(context);
         var tracker = gai.newTracker(config.trackingId);
         tracker.enableExceptionReporting(true);
-        
+
         if (config.enableDemographics) {
             tracker.enableAdvertisingIdCollection(true);
         }
-        
+
         if(config.dispatchInterval){
             gai.setLocalDispatchPeriod(config.dispatchInterval);
         }
-        
-        
+
+
         if(config.userId){
             var gAIUserId = "&uid"; //kGAIUserId
             tracker.set(gAIUserId, config.userId);
         }
-        
-        
+
+
         if(config.logging){
             settings.logging = config.logging;
-            
+
             if(config.logging.native){
                 console.log("To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG");
             }
         }
-        
+
         global.gaInstance = gai;
         global.gaTracker = tracker;
-        
+
         //setup timers
         global.gaTimers = [];
     }else{
@@ -57,20 +56,20 @@ exports.logEvent = function(data){
 
     if(data.label && data.label !== "" && data.label !== null)
         event.setLabel(data.label);
-     
+
     if(data.value && data.value !== "" && data.value !== null)
-        event.setValue(data.value);   
-    
+        event.setValue(data.value);
+
     var builtEvent = event.build();
-    
-    global.gaTracker.send(builtEvent);    
+
+    global.gaTracker.send(builtEvent);
 }
 
 
 exports.logException = function (data) {
     var description = "";
     var fatal = "";
-    
+
     if( typeof data === 'object') {
         description = data.description;
         fatal = (data.fatal) ? data.fatal : false;
@@ -80,12 +79,12 @@ exports.logException = function (data) {
         description = data;
         fatal = false;
     }
-    
+
     logToConsole("Logging GA Exception: " + description);
 
     var event = new com.google.android.gms.analytics.HitBuilders.ExceptionBuilder().setDescription(description).setFatal(fatal);
     var builtEvent = event.build();
-    
+
     global.gaTracker.send(builtEvent);
 }
 
@@ -109,7 +108,7 @@ exports.logTimingEvent = function (data) {
 
 //Start
 exports.startTimer = function (timerName, data) {
-    global.gaTimers.push({ 
+    global.gaTimers.push({
         name: timerName,
         value: new Date(),
         data: data
@@ -129,14 +128,14 @@ exports.stopTimer = function (timerName) {
 
             //set timer
             timer.data.value = endTime.getTime() - timer.value.getTime();
-            
+
             //Process event
             logTiming(timer.data);
             global.gaTimers.splice(i,1);
             break;
         }
-    }   
-    
+    }
+
     if(!foundTimer){
         logToConsole("Unable to find timer start event named " + timerName);
     }
@@ -146,16 +145,16 @@ exports.stopTimer = function (timerName) {
 function logTiming(data){
     logToConsole("Analytics Timing Event:" + JSON.stringify(data) + " at " + new Date());
     var event = new com.google.android.gms.analytics.HitBuilders.TimingBuilder().setCategory(data.category).setValue(data.value);
- 
+
     if(data.name && data.name !== "" && data.name !== null)
-        event.setVariable(data.name);   
-    
+        event.setVariable(data.name);
+
     if(data.label && data.label !== "" && data.label !== null)
         event.setLabel(data.label);
-    
+
     var builtEvent = event.build();
-    
-    global.gaTracker.send(builtEvent); 
+
+    global.gaTracker.send(builtEvent);
 }
 
 function logToConsole(message){
@@ -164,4 +163,11 @@ function logToConsole(message){
             console.log(message);
         }
     }
+}
+
+function getContext() {
+    var ctx = java.lang.Class.forName("android.app.AppGlobals").getMethod("getInitialApplication", null).invoke(null, null);
+    if (ctx) { return ctx; }
+
+    return java.lang.Class.forName("android.app.ActivityThread").getMethod("currentApplication", null).invoke(null, null);
 }

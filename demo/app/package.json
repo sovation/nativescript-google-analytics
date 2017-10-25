@@ -1,12 +1,12 @@
 {
-  "name": "tns-template-hello-world",
+  "name": "tns-template-hello-world-ts",
   "main": "app.js",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "author": {
     "name": "Telerik",
     "email": "support@telerik.com"
   },
-  "description": "Nativescript hello-world project template",
+  "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
   "keywords": [
     "telerik",
@@ -19,19 +19,90 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NativeScript/template-hello-world.git"
+    "url": "git+ssh://git@github.com/NativeScript/template-hello-world-ts.git"
   },
   "bugs": {
-    "url": "https://github.com/NativeScript/template-hello-world/issues"
+    "url": "https://github.com/NativeScript/template-hello-world-ts/issues"
   },
-  "homepage": "https://github.com/NativeScript/template-hello-world",
+  "homepage": "https://github.com/NativeScript/template-hello-world-ts",
   "android": {
     "v8Flags": "--expose_gc"
   },
-  "gitHead": "4875dd4efb834ced0d3b9302be7635bc1fb8d4b7",
-  "readme": "ERROR: No README data found!",
-  "_id": "tns-template-hello-world@1.5.1",
-  "_shasum": "c951887d9b3b4780e4fc0c139214a319d22f9ff6",
-  "_from": "git+https://github.com/sitefinitysteve/template-hello-world.git",
-  "_resolved": "git+https://github.com/sitefinitysteve/template-hello-world.git#4875dd4efb834ced0d3b9302be7635bc1fb8d4b7"
+  "devDependencies": {
+    "nativescript-dev-typescript": "^0.3.0"
+  },
+  "_id": "tns-template-hello-world-ts@1.6.0",
+  "_shasum": "a567c2b9a56024818c06596dab9629d155c5b8a8",
+  "_resolved": "https://registry.npmjs.org/tns-template-hello-world-ts/-/tns-template-hello-world-ts-1.6.0.tgz",
+  "_from": "tns-template-hello-world-ts@latest",
+  "scripts": {
+    "build.plugin": "cd ../src && npm run build",
+    "ci.tslint": "npm i && tslint --config '../tslint.json' 'app/**/*.ts' --exclude '**/node_modules/**'"
+  },
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "name": "enchev",
+    "email": "vladimir.enchev@gmail.com"
+  },
+  "dist": {
+    "shasum": "a567c2b9a56024818c06596dab9629d155c5b8a8",
+    "tarball": "http://registry.npmjs.org/tns-template-hello-world-ts/-/tns-template-hello-world-ts-1.6.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "enchev",
+      "email": "vladimir.enchev@gmail.com"
+    },
+    {
+      "name": "erjangavalji",
+      "email": "erjan.gavalji@gmail.com"
+    },
+    {
+      "name": "fatme",
+      "email": "hfatme@gmail.com"
+    },
+    {
+      "name": "hdeshev",
+      "email": "hristo@deshev.com"
+    },
+    {
+      "name": "kerezov",
+      "email": "d.kerezov@gmail.com"
+    },
+    {
+      "name": "ligaz",
+      "email": "stefan.dobrev@gmail.com"
+    },
+    {
+      "name": "nsndeck",
+      "email": "nedyalko.nikolov@telerik.com"
+    },
+    {
+      "name": "rosen-vladimirov",
+      "email": "rosen.vladimirov.91@gmail.com"
+    },
+    {
+      "name": "sdobrev",
+      "email": "stefan.dobrev@gmail.com"
+    },
+    {
+      "name": "tailsu",
+      "email": "tailsu@gmail.com"
+    },
+    {
+      "name": "teobugslayer",
+      "email": "teobugslayer@gmail.com"
+    },
+    {
+      "name": "valio.stoychev",
+      "email": "valio.stoychev@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-5-east.internal.npmjs.com",
+    "tmp": "tmp/tns-template-hello-world-ts-1.6.0.tgz_1455717516189_0.6427943941671401"
+  },
+  "directories": {},
+  "readme": "ERROR: No README data found!"
 }

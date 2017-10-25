@@ -5,3 +5,4 @@ GoogleServices-Info.plist
 
 demo/platforms/
 demo/node_modules/
+demo/.tmp_backup

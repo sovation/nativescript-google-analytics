@@ -1,0 +1,4 @@
+module Google21 {
+  umbrella "../../../../platforms/ios/Pods/Headers/Public/GoogleAnalytics"
+  export *
+}

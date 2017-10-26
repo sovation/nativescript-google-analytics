@@ -7,37 +7,41 @@ var settings = {
 exports.initalize = function (config) {
     if (config.trackingId) {
         debugger;
-        var gai = GAI.sharedInstance();
-        gai.trackUncaughtExceptions = true;
-        var defaultTracker = gai.trackerWithTrackingId(config.trackingId);
+        if (GAI !== undefined) {
+            var gai = GAI.sharedInstance();
+            gai.trackUncaughtExceptions = true;
+            var defaultTracker = gai.trackerWithTrackingId(config.trackingId);
 
-        if (config.enableDemographics) {
-            defaultTracker.allowIDFACollection = true;
-        }
+            if (config.enableDemographics) {
+                defaultTracker.allowIDFACollection = true;
+            }
 
-        if(config.dispatchInterval){
-            gai.dispatchInterval = config.dispatchInterval;
-        } 
+            if (config.dispatchInterval) {
+                gai.dispatchInterval = config.dispatchInterval;
+            }
 
-        if(config.userId){
-            var gAIUserId = "&uid"; //kGAIUserId
-            GAITracker.prototype.setValue.call(defaultTracker, gAIUserId, config.userId);
-        }
+            if (config.userId) {
+                var gAIUserId = "&uid"; //kGAIUserId
+                GAITracker.prototype.setValue.call(defaultTracker, gAIUserId, config.userId);
+            }
 
-        if(config.logging){
-            settings.logging = config.logging;
+            if (config.logging) {
+                settings.logging = config.logging;
              
-             if(config.logging.native){
-                var logLevel = 4; //kGAILogLevelVerbose
-                gai.logger.logLevel = logLevel;
-             }
+                if (config.logging.native) {
+                    var logLevel = 4; //kGAILogLevelVerbose
+                    gai.logger.logLevel = logLevel;
+                }
+            }
+        
+            global.gaTracker = defaultTracker;
+            global.gaInstance = gai;
+        
+            //setup timers
+            global.gaTimers = [];
+        } else {
+            console.log("UNABLE TO FIND GOOGLE ANALYTICS COCOAPOD OBJECTS!")
         }
-        
-        global.gaTracker = defaultTracker;
-        global.gaInstance = gai;
-        
-        //setup timers
-        global.gaTimers = [];
     }else{
         throw "Sup boss, how do you plan on tracking with no trackingId?  Please add it to the config";
     }

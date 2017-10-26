@@ -1,4 +1,4 @@
 module GoogleAnalytics {
-  umbrella "../../../../platforms/ios/Pods/Headers/Public/GoogleAnalytics"
+  umbrella "../../../../platforms/ios/Pods/Headers/Public"
   export *
 }

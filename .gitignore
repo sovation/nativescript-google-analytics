@@ -9,4 +9,4 @@ demo/typings/
 demo/.tmp_backup
 
 !publish/scripts/*.js
-publish/package
+publish/package/*

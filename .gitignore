@@ -10,3 +10,4 @@ demo/.tmp_backup
 
 !publish/scripts/*.js
 publish/package/*
+package/**

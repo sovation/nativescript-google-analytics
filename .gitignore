@@ -7,3 +7,6 @@ demo/platforms/
 demo/node_modules/
 demo/typings/
 demo/.tmp_backup
+
+!publish/scripts/*.js
+publish/package

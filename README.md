@@ -3,7 +3,9 @@
 * [Plugin](https://github.com/sitefinitysteve/nativescript-google-analytics/tree/master/plugin)
 * [Demo](https://github.com/sitefinitysteve/nativescript-googlea-nalytics/tree/master/demo)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5xIlbvT7j2g" frameborder="0" allowfullscreen></iframe>
+## Watch the video ##
+
+[![Watch the video](https://img.youtube.com/vi/5xIlbvT7j2g/0.jpg)](http://youtu.be/5xIlbvT7j2g)
 
 ## Release Notes ##
 ### 0.4.0 ###

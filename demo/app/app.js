@@ -10,17 +10,17 @@ if (application.ios) {
         __.prototype = b.prototype;
         d.prototype = new __();
     };
-    
+
     var appDelegate = (function (_super) {
         __extends(appDelegate, _super);
         function appDelegate() {
             _super.apply(this, arguments);
         }
-        
+
         appDelegate.prototype.applicationDidFinishLaunchingWithOptions = function (application, launchOptions) {
             initAnalytics(); //Module Code to initalize
         };
-        
+
         appDelegate.ObjCProtocols = [UIApplicationDelegate];
         return appDelegate;
     })(UIResponder);
@@ -33,7 +33,7 @@ if (application.ios) {
 
 }
 
-application.start("main-page");
+application.run({moduleName:"main-page"});
 
 function initAnalytics(){
     googleAnalytics.initalize({
@@ -43,7 +43,7 @@ function initAnalytics(){
                 dispatchInterval: 5,
                 logging: {
                     native: true,
-                    console: false
+                    console: true
                 }
             });
 }

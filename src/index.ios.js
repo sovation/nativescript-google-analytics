@@ -6,7 +6,7 @@ var settings = {
 
 exports.initalize = function (config) {
     if (config.trackingId) {
-        debugger;
+
         if (GAI !== undefined) {
             var gai = GAI.sharedInstance();
             gai.trackUncaughtExceptions = true;
@@ -27,16 +27,16 @@ exports.initalize = function (config) {
 
             if (config.logging) {
                 settings.logging = config.logging;
-             
+
                 if (config.logging.native) {
                     var logLevel = 4; //kGAILogLevelVerbose
                     gai.logger.logLevel = logLevel;
                 }
             }
-        
+
             global.gaTracker = defaultTracker;
             global.gaInstance = gai;
-        
+
             //setup timers
             global.gaTimers = [];
         } else {
@@ -49,7 +49,7 @@ exports.initalize = function (config) {
 
 exports.logView = function(viewname){
     logToConsole("Analytics Event: Log Screen View: " + viewname + " at " + new Date());
-    
+
     var gAIScreenName =  "&cd"; //kGAIScreenName
     var event = GAIDictionaryBuilder.createScreenView().setForKey(viewname, gAIScreenName);
     var builtEvent = event.build();
@@ -66,10 +66,10 @@ exports.logEvent = function(data){
       data.category,
       data.action,
       data.label,
-      data.value  
+      data.value
     );
     var builtEvent = event.build();
-    
+
     if(global.gaTracker)
         GAITracker.prototype.send.call(global.gaTracker, builtEvent);
     else
@@ -79,7 +79,7 @@ exports.logEvent = function(data){
 exports.logException = function (data) {
     var description = "";
     var fatal = "";
-    
+
     if( typeof data === 'object') {
         description = data.description;
         fatal = (data.fatal) ? data.fatal : false;
@@ -89,12 +89,12 @@ exports.logException = function (data) {
         description = data;
         fatal = false;
     }
-    
+
     logToConsole("Analytics Logging Exception: " + description);
 
     var event = GAIDictionaryBuilder.createExceptionWithDescriptionWithFatal(description, fatal);
     var builtEvent = event.build();
-    
+
     GAITracker.prototype.send.call(global.gaTracker, builtEvent);
 }
 
@@ -120,7 +120,7 @@ exports.logTimingEvent = function(data){
 
 //Start
 exports.startTimer = function (timerName, data) {
-    global.gaTimers.push({ 
+    global.gaTimers.push({
         name: timerName,
         value: new Date(),
         data: data
@@ -146,8 +146,8 @@ exports.stopTimer = function (timerName) {
             global.gaTimers.splice(i,1);
             break;
         }
-    }   
-    
+    }
+
     if(!foundTimer){
         logToConsole("Unable to find timer start event named " + timerName);
     }

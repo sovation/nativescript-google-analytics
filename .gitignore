@@ -8,6 +8,8 @@ demo/node_modules/
 demo/typings/
 demo/.tmp_backup
 
+src/node_modules/
+
 !publish/scripts/*.js
 publish/package/*
 package/**

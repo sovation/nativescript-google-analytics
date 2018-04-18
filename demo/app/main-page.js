@@ -2,7 +2,7 @@ var application = require("application");
 var viewModel = require("./main-view-model");
 var googleAnalytics = require("nativescript-google-analytics");
 var snackbarModule = require("nativescript-snackbar");
-var frameModule = require("ui/frame");
+var frameModule = require("tns-core-modules/ui/frame");
 var page;
 
 var snackbar = new snackbarModule.SnackBar();
@@ -10,10 +10,10 @@ var snackbar = new snackbarModule.SnackBar();
 exports.pageLoaded = function(args) {
     page = args.object;
     page.bindingContext = viewModel;
-    
+
     googleAnalytics.logView("Main-Page");
     //snackbar.simple("Logged view of main-page");
-    
+
     wireEvents();
 }
 
@@ -40,18 +40,18 @@ exports.onDispatchQueue = function (args) {
 }
 
 function wireEvents(){
-    
+
     page.getViewById("genstureSwipe").on("swipe", function (args) {
         googleAnalytics.logEvent({
             category: "Gestures",
             action: "Swipe",
             label: "Direction: " + args.direction,
-            value: args.direction 
+            value: args.direction
         });
         showMessage("Swipe Direction: " + args.direction);
         console.log("Swipe Direction: " + args.direction);
     });
-    
+
    page.getViewById("genstureLongTap").on("longPress", function (args) {
         googleAnalytics.logEvent({
             category: "Gestures",

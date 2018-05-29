@@ -33,7 +33,7 @@ if (application.ios) {
 
 }
 
-application.run({moduleName:"main-page"});
+application.run({ moduleName:"app-root"});
 
 function initAnalytics(){
     googleAnalytics.initalize({

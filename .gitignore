@@ -7,7 +7,7 @@ demo/platforms/
 demo/node_modules/
 demo/typings/
 demo/.tmp_backup
-demo/*.js
+demo/app/*.js
 
 src/node_modules/
 

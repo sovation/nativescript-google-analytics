@@ -2,7 +2,9 @@ import * as application from "tns-core-modules/application";
 var googleAnalytics = require("nativescript-google-analytics");
 import * as snackbarModule from "nativescript-snackbar";
 import * as frameModule from "tns-core-modules/ui/frame";
-var page;
+import { Page, View } from "tns-core-modules/ui/page";
+import { Image } from "tns-core-modules/ui/image";
+let page : Page;
 var snackbar = new snackbarModule.SnackBar();
 
 exports.pageLoaded = function (args) {
@@ -37,19 +39,18 @@ exports.onLogTimingEvent = function (args) {
     });
 
 
-    var logo = page.getViewById("logo");
+    let logo = page.getViewById("logo") as Image;
     logo.animate({
         rotate: 360,
         duration: 2200,
         delay: 100,
         iterations: 2,
         curve: "easeIn"
-    })
-        .then(function () {
-            googleAnalytics.stopTimer("Logo Timer");
+    }).then(function () {
+        googleAnalytics.stopTimer("Logo Timer");
 
-            snackbar.simple("Logged timed event");
-        });
+        snackbar.simple("Logged timed event");
+    });
 }
 
 exports.goBackClick = function (args) {

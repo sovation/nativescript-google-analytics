@@ -1,14 +1,18 @@
 import * as application from "tns-core-modules/application";
 import { MainViewModel } from "./main-view-model";
 var googleAnalytics = require("nativescript-google-analytics");
+import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
 import * as snackbarModule from "nativescript-snackbar";
-import * as frameModule from "tns-core-modules/ui/frame";
-var page;
+import { Frame, topmost } from "tns-core-modules/ui/frame";
+import { Page } from "tns-core-modules/ui/page";
+
+let page: Frame;
 
 let snackbar = new snackbarModule.SnackBar();
 
-exports.pageLoaded = function(args) {
-    page = args.object;
+exports.pageLoaded = function (args) {
+    debugger;
+    page = args.object as Frame;
     page.bindingContext = new MainViewModel();
 
     googleAnalytics.logView("Main-Page");
@@ -32,7 +36,9 @@ exports.secondaryActionTap = function(args) {
       action: "Click",
       label: "Secondary Button"
     });
-    frameModule.topmost().navigate("secondary-page");
+    
+    const topmostFrame: Frame = topmost();
+    topmostFrame.navigate("secondary-page");
 }
 
 exports.onDispatchQueue = function (args) {
@@ -41,7 +47,7 @@ exports.onDispatchQueue = function (args) {
 
 function wireEvents(){
 
-    page.getViewById("genstureSwipe").on("swipe", function (args) {
+    page.getViewById("genstureSwipe").on("swipe", function (args: SwipeGestureEventData) {
         googleAnalytics.logEvent({
             category: "Gestures",
             action: "Swipe",

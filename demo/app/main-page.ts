@@ -42,6 +42,8 @@ exports.secondaryActionTap = function(args) {
 }
 
 exports.onDispatchQueue = function (args) {
+    snackbar.simple("Flushing Queue");
+    
     googleAnalytics.dispatch();
 }
 

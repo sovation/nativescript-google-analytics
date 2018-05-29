@@ -1,5 +1,5 @@
 import * as application from "tns-core-modules/application";
-var googleAnalytics = require("nativescript-google-analytics");
+import * as googleAnalytics from "nativescript-google-analytics";
 import * as snackbarModule from "nativescript-snackbar";
 import * as frameModule from "tns-core-modules/ui/frame";
 import { Page, View } from "tns-core-modules/ui/page";
@@ -16,18 +16,15 @@ exports.pageLoaded = function (args) {
 }
 
 exports.onLogException = function (args) {
-    /*
-    googleAnalytics.logException({
-        description: "Fat Fingered it...",
-        fatal: true
-    });
-    */
-    var message = "Ergmagerd iOS excerpshern";
+    var message = (application.android) ? "Ergmagerd droid excerpshern" : "Ergmagerd iOS excerpshern";
+    
+    let exception: googleAnalytics.LogExceptionOptions = <googleAnalytics.LogExceptionOptions>{
+        description: message,
+        fatal: false
+    };
 
-    if (application.android)
-        message = "Ergmagerd droid excerpshern";
+    googleAnalytics.logException(exception);
 
-    googleAnalytics.logException(message);
     snackbar.simple(message + " Logged");
 }
 
@@ -59,4 +56,6 @@ exports.goBackClick = function (args) {
 
 exports.onDispatchQueue = function (args) {
     googleAnalytics.dispatch();
+
+    snackbar.simple("Flushing Queue");
 }

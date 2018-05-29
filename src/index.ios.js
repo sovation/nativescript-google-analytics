@@ -1,3 +1,5 @@
+/// https://developers.google.com/analytics/devguides/collection/ios/v3
+
 var application = require("application");
 
 var settings = {
@@ -80,7 +82,7 @@ exports.logException = function (data) {
     var description = "";
     var fatal = "";
 
-    if( typeof data === 'object') {
+    if (typeof data === 'object') {
         description = data.description;
         fatal = (data.fatal) ? data.fatal : false;
     }
@@ -88,6 +90,10 @@ exports.logException = function (data) {
         //not object
         description = data;
         fatal = false;
+    }
+
+    if (description.length > 100) {
+        console.log("GA Limits descriptions to 100 characters https://developers.google.com/analytics/devguides/collection/ios/v3/exceptions");
     }
 
     logToConsole("Analytics Logging Exception: " + description);

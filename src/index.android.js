@@ -1,3 +1,5 @@
+/// https://developers.google.com/analytics/devguides/collection/android/v4
+
 
 var settings = {
     logging: null
@@ -78,6 +80,10 @@ exports.logException = function (data) {
         //not object
         description = data;
         fatal = false;
+    }
+
+    if (description.length > 100) {
+        console.log("GA Limits descriptions to 100 characters https://developers.google.com/analytics/devguides/collection/android/v4/exceptions");
     }
 
     logToConsole("Logging GA Exception: " + description);

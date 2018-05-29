@@ -1,9 +1,11 @@
-var viewModel;
-var observable = require('data/observable').Observable;
-
-viewModel = new observable({
-    counter: 42,
-    message: ""
-});
-
-module.exports = viewModel;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var observable_1 = require("tns-core-modules/data/observable");
+var MainViewModel = (function (_super) {
+    __extends(MainViewModel, _super);
+    function MainViewModel() {
+        return _super.call(this) || this;
+    }
+    return MainViewModel;
+}(observable_1.Observable));
+exports.MainViewModel = MainViewModel;

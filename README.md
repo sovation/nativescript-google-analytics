@@ -1,7 +1,7 @@
 # Nativescript Google Analytics Plugin #
 
-* [Plugin](https://github.com/sitefinitysteve/nativescript-google-analytics/tree/master/plugin)
-* [Demo](https://github.com/sitefinitysteve/nativescript-googlea-nalytics/tree/master/demo)
+* [Src](https://github.com/sitefinitysteve/nativescript-google-analytics/tree/master/src)
+* [Demo](https://github.com/sitefinitysteve/nativescript-google-analytics/tree/master/demo)
 
 ## Watch the video ##
 

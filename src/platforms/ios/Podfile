@@ -1,1 +1,1 @@
-pod 'GoogleAnalytics'
+pod 'GoogleAnalytics', '~> 3.17'

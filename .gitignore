@@ -1,10 +1,11 @@
 npm-debug.log
 .vscode
+.idea
+node_modules
 google-services.json
 GoogleServices-Info.plist
 
 demo/platforms/
-demo/node_modules/
 demo/typings/
 demo/.tmp_backup
 demo/app/*.js

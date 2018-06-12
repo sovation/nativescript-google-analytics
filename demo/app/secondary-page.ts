@@ -1,24 +1,25 @@
 import * as application from "tns-core-modules/application";
+import {Page} from "tns-core-modules/ui/page";
+import {Image} from "tns-core-modules/ui/image";
+import {topmost} from "tns-core-modules/ui/frame";
 import * as googleAnalytics from "nativescript-google-analytics";
-import * as snackbarModule from "nativescript-snackbar";
-import * as frameModule from "tns-core-modules/ui/frame";
-import { Page, View } from "tns-core-modules/ui/page";
-import { Image } from "tns-core-modules/ui/image";
+import {SnackBar} from "nativescript-snackbar";
+
 let page : Page;
-var snackbar = new snackbarModule.SnackBar();
 
-exports.pageLoaded = function (args) {
+const snackbar = new SnackBar();
+
+exports.pageLoaded = args => {
     page = args.object;
-
 
     googleAnalytics.logView("Secondary-Page");
     //snackbar.simple("Logged view of secondary-page");
-}
+};
 
-exports.onLogException = function (args) {
-    var message = (application.android) ? "Ergmagerd droid excerpshern" : "Ergmagerd iOS excerpshern";
-    
-    let exception: googleAnalytics.LogExceptionOptions = <googleAnalytics.LogExceptionOptions>{
+exports.onLogException = args => {
+    const message = (application.android) ? "Ergmagerd droid excerpshern" : "Ergmagerd iOS excerpshern";
+
+    const exception: googleAnalytics.LogExceptionOptions = <googleAnalytics.LogExceptionOptions>{
         description: message,
         fatal: false
     };
@@ -26,9 +27,9 @@ exports.onLogException = function (args) {
     googleAnalytics.logException(exception);
 
     snackbar.simple(message + " Logged");
-}
+};
 
-exports.onLogTimingEvent = function (args) {
+exports.onLogTimingEvent = args => {
     googleAnalytics.startTimer("Logo Timer", {
         category: "Animations",
         name: "Rotate the logo",
@@ -43,19 +44,17 @@ exports.onLogTimingEvent = function (args) {
         delay: 100,
         iterations: 2,
         curve: "easeIn"
-    }).then(function () {
+    }).then(() => {
         googleAnalytics.stopTimer("Logo Timer");
 
         snackbar.simple("Logged timed event");
     });
-}
+};
 
-exports.goBackClick = function (args) {
-    frameModule.topmost().goBack();
-}
+exports.goBackClick = args => topmost().goBack();
 
-exports.onDispatchQueue = function (args) {
+exports.onDispatchQueue = args => {
     googleAnalytics.dispatch();
 
     snackbar.simple("Flushing Queue");
-}
+};

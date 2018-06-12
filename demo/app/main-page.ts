@@ -1,14 +1,12 @@
-import * as application from "tns-core-modules/application";
-import { MainViewModel } from "./main-view-model";
-var googleAnalytics = require("nativescript-google-analytics");
-import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
-import * as snackbarModule from "nativescript-snackbar";
-import { Frame, topmost } from "tns-core-modules/ui/frame";
-import { Page } from "tns-core-modules/ui/page";
+import {MainViewModel} from "./main-view-model";
+import {SwipeGestureEventData} from "tns-core-modules/ui/gestures";
+import {Frame, topmost} from "tns-core-modules/ui/frame";
+import {SnackBar} from "nativescript-snackbar";
+import * as googleAnalytics from "nativescript-google-analytics";
 
 let page: Frame;
 
-let snackbar = new snackbarModule.SnackBar();
+const snackbar = new SnackBar();
 
 exports.pageLoaded = function (args) {
     debugger;
@@ -19,37 +17,37 @@ exports.pageLoaded = function (args) {
     //snackbar.simple("Logged view of main-page");
 
     wireEvents();
-}
+};
 
-exports.mainActionTap = function(args) {
+exports.mainActionTap = args => {
     googleAnalytics.logEvent({
       category: "Basic Actions",
       action: "Click",
       label: "Main Button"
     });
     showMessage("Primary Tap");
-}
+};
 
-exports.secondaryActionTap = function(args) {
+exports.secondaryActionTap = args => {
     googleAnalytics.logEvent({
       category: "Basic Actions",
       action: "Click",
       label: "Secondary Button"
     });
-    
+
     const topmostFrame: Frame = topmost();
     topmostFrame.navigate("secondary-page");
-}
+};
 
-exports.onDispatchQueue = function (args) {
+exports.onDispatchQueue = args => {
     snackbar.simple("Flushing Queue");
-    
+
     googleAnalytics.dispatch();
-}
+};
 
 function wireEvents(){
 
-    page.getViewById("genstureSwipe").on("swipe", function (args: SwipeGestureEventData) {
+    page.getViewById("genstureSwipe").on("swipe", (args: SwipeGestureEventData) => {
         googleAnalytics.logEvent({
             category: "Gestures",
             action: "Swipe",
@@ -60,7 +58,7 @@ function wireEvents(){
         console.log("Swipe Direction: " + args.direction);
     });
 
-   page.getViewById("genstureLongTap").on("longPress", function (args) {
+   page.getViewById("genstureLongTap").on("longPress", args => {
         googleAnalytics.logEvent({
             category: "Gestures",
             action: "Long Press",

@@ -1,5 +1,5 @@
 export interface InitalizeOptions {
-    dispatchInterval?:number;
+    dispatchInterval?: number;
     logging?: {
         native?: boolean;
         console?: boolean;
@@ -22,13 +22,13 @@ export interface LogExceptionOptions {
 }
 
 export interface StartTimerOptions {
-    category: string,
+    category: string;
     label?: string;
     name?: string;
 }
 
 export interface LogTimingEventOptions {
-    category: string,
+    category: string;
     label?: string;
     name?: string;
     value: number;

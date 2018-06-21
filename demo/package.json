@@ -9,7 +9,7 @@
     }
   },
   "dependencies": {
-    "nativescript-google-analytics": "file:../publish/package/nativescript-google-analytics-0.4.3.tgz",
+    "nativescript-google-analytics": "file:../publish/package/nativescript-google-analytics-0.4.4.tgz",
     "nativescript-snackbar": "~3.1.0",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-unit-test-runner": "^0.3.4",

@@ -2,18 +2,18 @@
   "nativescript": {
     "id": "org.nativescript.demo",
     "tns-android": {
-      "version": "4.0.1"
+      "version": "4.1.3"
     },
     "tns-ios": {
-      "version": "4.0.1"
+      "version": "4.1.0"
     }
   },
   "dependencies": {
-    "nativescript-google-analytics": "file:../package/nativescript-google-analytics-0.4.2.tgz",
-    "nativescript-snackbar": "^3.1.0",
+    "nativescript-google-analytics": "file:../publish/package/nativescript-google-analytics-0.4.3.tgz",
+    "nativescript-snackbar": "~3.1.0",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-unit-test-runner": "^0.3.4",
-    "tns-core-modules": "^4.0.1"
+    "tns-core-modules": "~4.1.0"
   },
   "devDependencies": {
     "awesome-typescript-loader": "~3.1.3",
@@ -33,22 +33,11 @@
     "nativescript-dev-webpack": "^0.7.3",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.1.0",
-    "tns-platform-declarations": "^3.1.0",
+    "tns-platform-declarations": "~4.1.0",
     "tslint": "~5.4.3",
-    "typescript": "~2.3.0",
+    "typescript": "~2.7.0",
     "webpack": "~3.2.0",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-sources": "~1.0.1"
-  },
-  "scripts": {
-    "build.plugin": "cd ../src && npm run build",
-    "ci.tslint": "npm i && tslint --config '../tslint.json' 'app/**/*.ts' --exclude '**/node_modules/**'",
-    "ns-bundle": "ns-bundle",
-    "publish-ios-bundle": "npm run ns-bundle --ios --publish-app",
-    "generate-android-snapshot": "generate-android-snapshot --targetArchs arm,arm64,ia32 --install",
-    "start-android-bundle": "npm run ns-bundle --android --run-app",
-    "start-ios-bundle": "npm run ns-bundle --ios --run-app",
-    "build-android-bundle": "npm run ns-bundle --android --build-app",
-    "build-ios-bundle": "npm run ns-bundle --ios --build-app"
   }
 }

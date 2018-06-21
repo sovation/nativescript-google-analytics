@@ -5,25 +5,24 @@
   "main": "index.js",
   "nativescript": {
     "platforms": {
-      "android": "4.0.0",
-      "ios": "4.0.1"
+      "android": "3.3.0",
+      "ios": "3.3.0"
     }
   },
   "scripts": {
     "tsc": "tsc -skipLibCheck",
     "build": "npm i && tsc",
-    "postclone": "npm i && node scripts/postclone.js && cd ../demo && npm i && cd ../src && npm run plugin.link",
     "test.android": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build android && tns test android --justlaunch",
     "test.ios": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build ios && tns test ios --justlaunch",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
-    "plugin.link": "npm link && cd ../demo && npm link nativescript-preferences && cd ../src",
     "plugin.tscwatch": "npm run tsc -- -w",
-    "demo.ios": "npm i && npm run tsc && cd ../demo && tns run ios --syncAllFiles",
+    "demo.ios": "npm run preparedemo && cd ../demo && tns run ios",
     "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
     "demo.debug.ios": "npm i && npm run tsc && cd ../demo && tns debug ios --syncAllFiles",
     "demo.debug.android": "npm i && npm run tsc && cd ../demo && tns debug android --syncAllFiles",
     "demo.reset": "cd ../demo && rimraf platforms",
-    "plugin.prepare": "npm run tsc && cd ../demo && tns plugin remove nativescript-preferences && tns plugin add ../src",
+    "package": "cd ../publish && ./pack.sh",
+    "preparedemo": "npm run build && npm run package && cd ../demo && tns plugin add ../publish/package/*.tgz && tns install",
     "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'"
   },
@@ -55,6 +54,13 @@
     "email": "steve@sitefinitysteve.com",
     "url": "https://github.com/sitefinitysteve"
   },
+  "contributors": [
+    {
+      "name": "Eddy Verbruggen",
+      "email": "eddyverbruggen@gmail.com",
+      "url": "https://github.com/eddyverbruggen"
+    }
+  ],
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
   "bugs": "https://github.com/sitefinitysteve/nativescript-google-analytics/issues",

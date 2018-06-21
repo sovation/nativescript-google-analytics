@@ -1,6 +1,9 @@
 export interface InitalizeOptions {
-    dispatchInterval?:number;
-    logging?: boolean;
+    dispatchInterval?: number;
+    logging?: {
+        native?: boolean;
+        console?: boolean;
+    };
     enableDemographics?: boolean;
     userId?: string;
     trackingId: string;
@@ -19,13 +22,13 @@ export interface LogExceptionOptions {
 }
 
 export interface StartTimerOptions {
-    category: string,
+    category: string;
     label?: string;
     name?: string;
 }
 
 export interface LogTimingEventOptions {
-    category: string,
+    category: string;
     label?: string;
     name?: string;
     value: number;

@@ -29,7 +29,8 @@ exports.initalize = function (config) {
                 settings.logging = config.logging;
 
                 if (config.logging.native) {
-                    gai.logger.logLevel = GAILogLevel.kGAILogLevelVerbose;
+                    var logLevel = 4; //kGAILogLevelVerbose
+                    gai.logger.logLevel = logLevel;
                 }
             }
 

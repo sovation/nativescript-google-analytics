@@ -8,6 +8,10 @@
 [![Watch the video](https://img.youtube.com/vi/5xIlbvT7j2g/0.jpg)](http://youtu.be/5xIlbvT7j2g)
 
 ## Release Notes ##
+
+### 0.4.5 ###
+* Updated gradle to use play-services-analytics:16.0.8 to avoid compile error
+
 ### 0.4.3 ###
 * Updated demos to TS
 * Updated demos to 4.0, verified functionality

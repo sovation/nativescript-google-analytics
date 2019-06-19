@@ -8,7 +8,6 @@ android {
 
 dependencies {
     // [START gms_compile]
-    def googlePlayServicesVersion = project.hasProperty('googlePlayServicesVersion') ? project.googlePlayServicesVersion : '+'
-	compile "com.google.android.gms:play-services-analytics:$googlePlayServicesVersion"
+	implementation "com.google.android.gms:play-services-analytics:16.0.0"
     // [END gms_compile]
 }
